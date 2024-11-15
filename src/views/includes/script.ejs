@@ -1,0 +1,71 @@
+<script>
+     function openModalEditContato(id, name, lastName, phone, mail) {
+        
+        let btnEditarContato = document.querySelector("#btnEditarContato");
+        let btnClsEditarContato = document.querySelector("#btnClsEditarContato");
+        let btnCancelaEditarContato = document.querySelector("#btnCancelarEditarContato");
+        let modalEditCantato = document.querySelector(`#editarContato`);
+
+        document.getElementById("formEdit").action = `/editarContato/${id}`;
+
+        modalEditCantato.style.display = "block";
+
+        eventModal(modalEditCantato, btnCancelaEditarContato, btnClsEditarContato);
+        eventDragElement(document.querySelector("#dragzoneEditar"), document.querySelector("#dragableEditar"));
+
+        document.getElementById("editName").value = name;
+        document.getElementById("editLastName").value = lastName;
+        document.getElementById("editPhone").value = phone;
+        document.getElementById("editMail").value = mail;
+    }
+
+    function eventModal(modal, btnCancela, btnFecha) {
+
+            btnFecha.onclick = () => {
+                modal.style.display = "none";
+                return;
+            }
+
+            btnCancela.onclick = () => {
+                modal.style.display = "none";
+                return;
+            }
+
+            window.onclick = (ev) => {
+                if (ev.target == modal) {
+                    modal.style.display = "none";
+                    return;
+                }
+            }
+    }
+
+    function eventDragElement(dragzone, dragable) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        
+        const dragMouseUp = () => {
+            document.onmouseup = null
+            document.onmousemove = null
+        };
+
+        const dragMouseMove = (e) => {
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            dragzone.style.top = `${dragzone.offsetTop - pos2}px`;
+            dragzone.style.left = `${dragzone.offsetLeft - pos1}px`;
+        };
+
+        const dragMouseDown = (e) => {
+            e.preventDefault();
+
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            document.onmouseup = dragMouseUp;
+            document.onmousemove = dragMouseMove;
+        };
+        dragable.onmousedown = dragMouseDown;
+    }
+</script>
