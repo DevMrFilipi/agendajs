@@ -1,0 +1,123 @@
+<%- include('includes/head')%>
+
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-6 text-center"><%- title %></h1>
+  <div class="alert-message flex relative justify-center alert-message m-6 p-4 h-4">
+  <% if (errors.length > 0) { %>
+    <div
+      class="flex justify-center container-unsuccess animate-pulse items-center p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Info</span>
+      <div>
+        <% errors.forEach(erro => { %> <%= erro %><br />
+        <% }); %>
+      </div>
+    </div>
+    <% } %> 
+    <% if (success.length > 0) { %>
+    <div
+      class="flex justify-center container-success animate-pulse items-center p-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+      role="alert"
+    >
+      <svg
+        class="flex-shrink-0 inline w-4 h-4 me-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span class="sr-only">Info</span>
+      <div>
+        <% success.forEach(success => { %> <%= success %><br />
+        <% }); %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <form
+    action="/register"
+    method="POST"
+    class="w-full form-register max-w-sm mx-auto bg-white p-8 rounded-md shadow-md"
+  >
+    <div class="mb-4">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name"
+        >Name</label
+      >
+      <input
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="John Doe"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email"
+        >Email</label
+      >
+      <input
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="john@example.com"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password"
+        >Password</label
+      >
+      <input
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="********"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="confirmPassword"
+        >Confirm Password</label
+      >
+      <input
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="********"
+      />
+    </div>
+    <button
+      class="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
+      type="submit"
+    >
+      Register
+    </button>
+    <div class="flex justify-center items-center space-x-6">
+      <a href="./login" class="text-sm text-indigo-600 mt-2 hover:underline"
+        >Já possuo uma conta</a
+      >
+    </div>
+  </form>
+</div>
+
+<%- include('includes/footer')%>
