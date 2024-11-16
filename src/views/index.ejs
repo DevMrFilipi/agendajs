@@ -202,12 +202,12 @@
         <div id="dragzoneEditar" ; class="relative p-4 w-full max-w-md max-h-full">
           <!-- Modal content -->
           <div
-            class="relative bg-indigo-300 rounded-lg shadow dark:bg-gray-700"
+            class="relative bg-indigo-300 rounded-lg shadow"
           >
             <!-- Modal header -->
             <div
               id="dragableEditar"
-              class="flex items-center cursor-move z-10 justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+              class="flex items-center cursor-move z-10 justify-between p-4 md:p-5 border-b rounded-t"
             >
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                 Edite seu contato.
@@ -215,7 +215,7 @@
               <button
                 id="btnClsEditarContato"
                 type="button"
-                class="end-2.5 text-black bg-transparent hover:bg-indigo-400 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                class="end-2.5 text-black bg-transparent hover:bg-indigo-400 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                 data-modal-hide="authentication-modal"
               >
                 <svg
@@ -325,10 +325,10 @@
     <% if (contatos.length > 0) { %>
       <div class="relative overflow-x-auto">
         <table
-          class="w-full text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400"
+          class="w-full text-sm text-left rtl:text-right text-gray-800"
         >
           <thead
-            class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400"
+            class="text-xs text-gray-700 uppercase bg-gray-100 "
           >
             <tr>
               <th scope="col" class="px-6 py-3">NOME</th>
@@ -340,7 +340,7 @@
           </thead>
           <tbody>
             <% contatos.forEach(contato => { %>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <tr class="bg-white border-b">
                 <td class="hidden" id="<%= contato.id %>"></td>
                 <td class="px-6 py-4"><%= contato.name %></td>
                 <td class="px-6 py-4"><%= contato.lastName %></td>
@@ -349,12 +349,12 @@
                 <td class="px-4 py-2">
                   <div class="flex justify-center">
                     <a class="m-2" href="#" onclick="openModalEditContato('<%= contato.id %>', '<%= contato.name %>', '<%= contato.lastName %>', '<%= contato.phone %>', '<%= contato.mail %>')">
-                      <svg class="w-6 h-6 text-blue-800 dark:text-white hover:text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <svg class="w-6 h-6 text-blue-800 hover:text-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
                       </svg>
                     </a>
                     <a class="m-2 h-2" href="./deletarContato/<%= contato.id %>">
-                      <svg class="w-6 h-6 text-red-500 dark:text-white hover:text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <svg class="w-6 h-6 text-red-500 hover:text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v3c0 .5523.44772 1 1 1h16c.5523 0 1-.4477 1-1v-3M3 15V6c0-.55228.44772-1 1-1h16c.5523 0 1 .44772 1 1v9M3 15h18M8 15v4m4-4v4m4-4v4m-5.5061-7.4939L12 10m0 0 1.5061-1.50614M12 10l1.5061 1.5061M12 10l-1.5061-1.50614"/>
                       </svg>
                     </a>
